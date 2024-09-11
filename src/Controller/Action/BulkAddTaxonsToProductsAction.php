@@ -51,7 +51,7 @@ final class BulkAddTaxonsToProductsAction
 
     public function __invoke(Request $request): Response
     {
-        $ids = $request->query->get('ids') ?? [];
+        $ids = $request->query->all()['ids'] ?? [];
         Assert::isArray($ids);
         $products = $this->productRepository->findByIds($ids);
 
